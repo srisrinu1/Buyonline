@@ -3,6 +3,7 @@ import {useProductsContext} from '../context/product_context';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import Loading from './Loading';
+import Error from './Error';
 import Product from './Product';
 
 const FeaturedProducts = () => {
@@ -11,6 +12,12 @@ const FeaturedProducts = () => {
         productsError: error,
         featuredProducts: featured,
       } = useProductsContext();
+   if(loading) {
+       <Loading/>
+   }
+   if(error) {
+       <Error/>
+   }
   return (
    <Wrapper className="section">
     <div className="title">
