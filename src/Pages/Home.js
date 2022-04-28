@@ -1,5 +1,6 @@
 import React from 'react';
 import Contact from '../components/Contact';
+import FeaturedProducts from '../components/FeaturedProducts';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 
@@ -8,6 +9,7 @@ const Home = () => {
     <>
 
      <Hero/>
+     <FeaturedProducts/>
      <Services/>
      <Contact/>
      </>
