@@ -2,7 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import heroBcg from '../assets/hero-bcg.jpeg';
 import heroBcg2 from "../assets/hero-bcg-2.jpeg";
-import furniture from '../assets/furniture.jpg'
+import furniture from '../assets/furniture.jpg';
+import {Link} from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -16,9 +17,9 @@ const Hero = () => {
           Find the perfect piece of furniture for your day to day needs, without
           compromising on beauty or functionality.
         </p>
-        {/* <Link to="/products" className="btn hero-btn">
+        <Link to="/products" className="btn hero-btn">
           Shop Now
-        </Link> */}
+        </Link>
       </article>
       <article className="img-container">
         <img src={heroBcg} alt="table" className="main-img" />
