@@ -29,7 +29,7 @@ const initialState ={
 
 const ProductsContext=createContext();
 
-const ProductsProvider=(props)=>{
+export const ProductsProvider=(props)=>{
    const [state,dispatch]=useReducer(ProductsReducer,initialState);
    const openSideBar=()=>{
        dispatch({type:SIDEBAR_OPEN});
@@ -75,4 +75,11 @@ const ProductsProvider=(props)=>{
 
 }
 
-// const
+export const useProductsContext=()=>{
+    const context=useContext(ProductsContext);
+    if(context===undefined){
+        throw new Error("useUserContext was used outside of its Provider");
+    }
+    return(context);
+
+}
