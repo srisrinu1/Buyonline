@@ -1,4 +1,21 @@
 import { GiCompass, GiDiamondHard, GiStabbedNote } from "react-icons/gi";
+
+export const links = [{
+        id: 1,
+        text: "home",
+        link: "/"
+    },
+    {
+        id: 2,
+        text: "about",
+        link: "/about"
+    },
+    {
+        id: 3,
+        text: "products",
+        link: "/products"
+    }
+]
 export const services = [{
         id: 1,
         icon: < GiCompass / > ,
