@@ -16,7 +16,7 @@ const Sidebar = () => {
         {/* <img src={logo} className="logo" alt="comfy sloth" /> */}
         <h4>
           <i>
-            <span className="logo">Furni</span>Shop
+            <span className="logo">Buy</span>Online
           </i>
         </h4>
         <button className="close-btn" type="button" onClick={closeSideBar}>
