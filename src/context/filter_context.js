@@ -40,6 +40,18 @@ export const FilterProvider = () => {
         dispatch({type:LOAD_PRODUCTS,payload:products});
 
     },[products]);
+    useEffect(()=>{
+      dispatch({type:FILTER_PRODUCTS});
+      dispatch({type:SORT_PRODUCTS})
+    },[products,state.sort,state.filters]);
+
+    const setgridView =()=>{
+        dispatch({type:SET_GRID_VIEW})
+    }
+
+    const setListView =()=>{
+        dispatch({type:SET_LIST_VIEW});
+    }
 
 
   return (
