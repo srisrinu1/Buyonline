@@ -4,7 +4,7 @@ import {
     SET_GRID_VIEW,
     SET_LIST_VIEW,
     UPDATE_SORT,
-    UPDATE_FILTERES,
+    UPDATE_FILTERS,
     SORT_PRODUCTS,
     FILTER_PRODUCTS,
     CLEAR_FILTERS
@@ -32,7 +32,7 @@ const initialState={
 
 const FilterContext=createContext();
 
-export const FilterProvider = () => {
+export const FilterProvider = (props) => {
     const {products}=useProductsContext();
     const [state,dispatch]=useReducer(filter_reducer,initialState);
 
@@ -52,12 +52,46 @@ export const FilterProvider = () => {
     const setListView =()=>{
         dispatch({type:SET_LIST_VIEW});
     }
+    const updateSort=(e)=>{
+        let value=e.target.value;
+        dispatch({type:UPDATE_SORT,payload:value});
+    }
+    const updateFilters=(e)=>{
+        let name=e.target.name;
+        let value=e.target.value;
+        if(name==="category"){
+            value=e.target.textContent;
+        }
+        if(name==="color"){
+            value=e.target.dataset.color;
+        }
+        if(name==="price"){
+            value=Number(value);
+        }
+        if(name==="shipping"){
+            value=e.target.checked;
+        }
+        dispatch({type:UPDATE_FILTERS,payload:{name,value}});
+    }
+    const clearFilters=()=>{
+        dispatch({type:CLEAR_FILTERS});
+    }
 
 
   return (
-    <div>
+   <FilterContext.Provider value={{
+       ...state,
+       setgridView,
+       setListView,
+       updateSort,
+       updateFilters,
+       clearFilters
 
-    </div>
+   }
+
+   }>
+      {props.children}
+   </FilterContext.Provider>
   )
 }
 
