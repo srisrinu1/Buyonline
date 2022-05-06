@@ -95,3 +95,11 @@ export const FilterProvider = (props) => {
   )
 }
 
+export const useFilters=()=>{
+    const context=useContext(FilterContext);
+    if(context===undefined){
+        throw new Error("useFilterContext was used outside of its Provider");
+    }
+    return(context);
+}
+
