@@ -3,7 +3,7 @@ import {
     SET_GRID_VIEW,
     SET_LIST_VIEW,
     UPDATE_SORT,
-    UPDATE_FILTERES,
+    UPDATE_FILTERS,
     SORT_PRODUCTS,
     FILTER_PRODUCTS,
     CLEAR_FILTERS
@@ -52,7 +52,7 @@ export const filter_reducer = (state, action) => {
                 })
             }
             return {...state, filteredProducts: tempProducts };
-        case UPDATE_FILTERES:
+        case UPDATE_FILTERS:
             const { name, value } = payload;
             return {...state, filters: {...state.filters, [name]: value } };
 
