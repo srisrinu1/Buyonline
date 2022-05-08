@@ -32,7 +32,7 @@ const ListView = (props) => {
 
 const Wrapper= styled.section `
 display:grid;
-row-gap:3rem;
+row-gap:2rem;
 img{
   width:100%;
   display:block;
