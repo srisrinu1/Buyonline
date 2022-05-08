@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {FaSearch} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
+import {formatPrice} from '../utils/helpers';
 
 const Product = (props) => {
     const {image,name,price,id}=props;
@@ -15,7 +16,7 @@ const Product = (props) => {
           </div>
           <footer>
             <h5>{name}</h5>
-            <p>{price}</p>
+            <p>{formatPrice(price)}</p>
           </footer>
         </Wrapper>
       );

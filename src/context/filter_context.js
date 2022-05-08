@@ -8,7 +8,7 @@ import {
     SORT_PRODUCTS,
     FILTER_PRODUCTS,
     CLEAR_FILTERS
-} from './actions';
+} from '../actions';
 import {useProductsContext} from './product_context';
 import {filter_reducer} from '../reducers/filter_reducer';
 
