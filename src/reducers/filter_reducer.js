@@ -77,7 +77,7 @@ export const filter_reducer = (state, action) => {
             }
             if (color !== "all") {
                 temporaryProducts = temporaryProducts.filter(product => {
-                    return (product.color === color)
+                    return (product.colors.find((c) => c === color))
                 })
             }
             temporaryProducts = temporaryProducts.filter(
