@@ -61,22 +61,22 @@ export const filter_reducer = (state, action) => {
             const { text, category, company, color, price, shipping } = state.filters;
             let temporaryProducts = [...allProducts];
             if (text) {
-                temporaryProducts.filter(product => {
-                    return (product.name.totLowerCase.startsWith(text));
-                })
+                temporaryProducts = temporaryProducts.filter((product) => {
+                    return product.name.toLowerCase().startsWith(text);
+                });
             }
             if (category !== "all") {
-                temporaryProducts.filter(product => {
+                temporaryProducts = temporaryProducts.filter(product => {
                     return (product.category === category);
                 })
             }
             if (company !== "all") {
-                temporaryProducts.filter(product => {
+                temporaryProducts = temporaryProducts.filter(product => {
                     return (product.company === company);
                 })
             }
             if (color !== "all") {
-                temporaryProducts.filter(product => {
+                temporaryProducts = temporaryProducts.filter(product => {
                     return (product.color === color)
                 })
             }

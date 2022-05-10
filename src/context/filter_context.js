@@ -20,8 +20,8 @@ const initialState={
     filters:{
         text:"",
         company:"all",
-        colors:"all",
-        minxPrice:0,
+        color:"all",
+        minPrice:0,
         maxPrice:0,
         price:0,
         shipping:false,
@@ -36,10 +36,11 @@ export const FilterProvider = (props) => {
     const {products}=useProductsContext();
     const [state,dispatch]=useReducer(filter_reducer,initialState);
 
-    useEffect(()=>{
-        dispatch({type:LOAD_PRODUCTS,payload:products});
+    useEffect(() => {
+        dispatch({ type: LOAD_PRODUCTS, payload: products });
+      }, [products]);
 
-    },[products]);
+
     useEffect(()=>{
       dispatch({type:FILTER_PRODUCTS});
       dispatch({type:SORT_PRODUCTS})
@@ -56,23 +57,27 @@ export const FilterProvider = (props) => {
         let value=e.target.value;
         dispatch({type:UPDATE_SORT,payload:value});
     }
-    const updateFilters=(e)=>{
-        let name=e.target.name;
-        let value=e.target.value;
-        if(name==="category"){
-            value=e.target.textContent;
+    const updateFilters = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        if (name === "category") {
+          value = e.target.textContent;
         }
-        if(name==="color"){
-            value=e.target.dataset.color;
+        if (name === "color") {
+          value = e.target.dataset.color;
         }
-        if(name==="price"){
-            value=Number(value);
+
+        if (name === "price") {
+          //value was being saved as a string on changing slider
+          value = Number(value);
         }
-        if(name==="shipping"){
-            value=e.target.checked;
+
+        if (name === "shipping") {
+          value = e.target.checked;
         }
-        dispatch({type:UPDATE_FILTERS,payload:{name,value}});
-    }
+
+        dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+      };
     const clearFilters=()=>{
         dispatch({type:CLEAR_FILTERS});
     }

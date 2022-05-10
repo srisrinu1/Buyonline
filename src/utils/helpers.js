@@ -6,3 +6,13 @@ export const formatPrice = (price) => {
     }).format((price));
     return newNumber;
 }
+
+//get All unique values
+
+export const getAllUniqueValues = (data, type) => {
+    let unique = data.map((item) => item[type]);
+    if (type === "colors") {
+        unique = unique.flat();
+    }
+    return ["all", ...new Set(unique)]
+}
