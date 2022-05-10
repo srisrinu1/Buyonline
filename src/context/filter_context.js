@@ -58,26 +58,27 @@ export const FilterProvider = (props) => {
         dispatch({type:UPDATE_SORT,payload:value});
     }
     const updateFilters = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
-        if (name === "category") {
-          value = e.target.textContent;
-        }
-        if (name === "color") {
-          value = e.target.dataset.color;
-        }
+      let name = e.target.name;
+      let value = e.target.value;
+      if (name === "category") {
+        value = e.target.textContent;
+      }
+      if (name === "color") {
+        value = e.target.dataset.color;
+      }
 
-        if (name === "price") {
-          //value was being saved as a string on changing slider
-          value = Number(value);
-        }
+      if (name === "price") {
+        //value was being saved as a string on changing slider
+        value = Number(value);
+      }
 
-        if (name === "shipping") {
-          value = e.target.checked;
-        }
+      if (name === "shipping") {
+        value = e.target.checked;
+      }
 
-        dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
-      };
+      dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+    };
+
     const clearFilters=()=>{
         dispatch({type:CLEAR_FILTERS});
     }
