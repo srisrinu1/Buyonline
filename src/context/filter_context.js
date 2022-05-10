@@ -20,7 +20,7 @@ const initialState={
     filters:{
         text:"",
         company:"all",
-        colors:"all",
+        color:"all",
         minxPrice:0,
         maxPrice:0,
         price:0,
