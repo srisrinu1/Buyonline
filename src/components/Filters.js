@@ -87,39 +87,41 @@ const colors=getAllUniqueValues(allProducts,"colors");
          {/* Colors start */}
 
          <div className="form-control">
-          <h5>Colors</h5>
-          <div className="colors">
-              {colors.map((c,index)=>{
-                if(c==="all"){
-                  return(
-                      <button
+            <h5>colors</h5>
+            <div className="colors">
+              {colors.map((c, index) => {
+                if (c === "all") {
+                  return (
+                    <button
                       key={index}
                       name="color"
                       onClick={updateFilters}
                       data-color="all"
                       className={`${
                         color === "all" ? "all-btn active" : "all-btn"
-                      }`}>
-
-                         all
-                      </button>
-                  )
-              }
-              return(
-                 <button
-                 type="button"
-                 key={index}
-                 onClick={updateFilters}
-                 data-color={c}
-                 className={`${
-                   color===c ? "color-btn acctive" : "color-btn"}`}
-                   >
-                    {color===c?<FaCheck/>:null}
-                 </button>
-              )
+                      }`}
+                    >
+                      all
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    key={index}
+                    name="color"
+                    style={{ background: c }}
+                    className={`${
+                      color === c ? "color-btn active" : "color-btn"
+                    }`}
+                    data-color={c}
+                    onClick={updateFilters}
+                  >
+                    {color === c ? <FaCheck /> : null}
+                  </button>
+                );
               })}
+            </div>
           </div>
-         </div>
 
         {/* Colors end  */}
 

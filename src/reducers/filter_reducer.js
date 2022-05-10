@@ -17,8 +17,8 @@ export const filter_reducer = (state, action) => {
             maxPrice = Math.max(...maxPrice)
             return {
                 ...state,
-                filteredProducts: payload,
-                allProducts: payload,
+                filteredProducts: [...payload],
+                allProducts: [...payload],
                 filters: {...state.filters,
                     maxPrice: maxPrice,
                     price: maxPrice,
