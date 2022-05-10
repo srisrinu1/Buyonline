@@ -20,6 +20,7 @@ const initialState={
     filters:{
         text:"",
         company:"all",
+        category:'all',
         color:"all",
         minPrice:0,
         maxPrice:0,
@@ -37,14 +38,13 @@ export const FilterProvider = (props) => {
     const [state,dispatch]=useReducer(filter_reducer,initialState);
 
     useEffect(() => {
-        dispatch({ type: LOAD_PRODUCTS, payload: products });
-      }, [products]);
+      dispatch({ type: LOAD_PRODUCTS, payload: products });
+    }, [products]);
 
-
-    useEffect(()=>{
-      dispatch({type:FILTER_PRODUCTS});
-      dispatch({type:SORT_PRODUCTS})
-    },[products,state.sort,state.filters]);
+    useEffect(() => {
+      dispatch({ type: FILTER_PRODUCTS });
+      dispatch({ type: SORT_PRODUCTS });
+    }, [products, state.sort, state.filters]);
 
     const setgridView =()=>{
         dispatch({type:SET_GRID_VIEW})
