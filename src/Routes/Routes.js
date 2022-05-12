@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Home from "../Pages/Home";
 import Products from "../Pages/Products";
+import SingleProduct from "../Pages/SingleProduct";
 
 
 
@@ -20,6 +21,10 @@ const Routes = () => {
           </Route>
           <Route exact path="/products">
             <Products />
+          </Route>
+          <Route path="/products/:id">
+          <SingleProduct />
+
           </Route>
         </Switch>
 
