@@ -4,16 +4,25 @@ import './index.css';
 import App from './App';
 import {ProductsProvider} from './context/product_context';
 import {FilterProvider} from './context/filter_context';
+import { Auth0Provider } from "@auth0/auth0-react";
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log(process.env.REACT_APP_DOMAIN);
+console.log(process.env.REACT_APP_AUTH_CLIENT);
 root.render(
   <React.StrictMode>
+  <Auth0Provider
+  domain={process.env.REACT_APP_DOMAIN}
+  client={process.env.REACT_APP_AUTH_CLIENT}
+  redirectUri={window.location.origin}
+  cacheLocation="localstorage">
   <ProductsProvider>
   <FilterProvider>
     <App />
     </FilterProvider>
     </ProductsProvider>
+    </Auth0Provider>
   </React.StrictMode>
 );
 
