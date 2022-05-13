@@ -9,6 +9,7 @@ import PageHero from '../components/PageHero';
 import ProductImages from '../components/ProductImages';
 import styled from 'styled-components';
 import Stars from '../components/Stars';
+import AddtoCart from '../components/AddtoCart';
 
 const SingleProduct = () => {
   const {id}=useParams();
@@ -61,7 +62,7 @@ const SingleProduct = () => {
   return (
     <Wrapper>
       <PageHero title={name} product={product}/>
-      <div className="section-center page">
+      <div className="section-center page-100">
         <Link to="/products">
           back to products
         </Link>
@@ -70,10 +71,18 @@ const SingleProduct = () => {
           <section className="content">
              <h2>{name}</h2>
              <Stars stars={stars} reviews={reviews}/>
+             <h5 className="price">{formatPrice(price)}</h5>
              <p className="desc">{description}</p>
+             <p className="info">Available:{stock>0? "in stock":"out of stock"}</p>
+             <p className="info">
+              SKU:<span>{uid}</span>
+             </p>
              <p className="info">
                Brand: <span>{company}</span>
              </p>
+             <hr />
+             {stock>0?<AddtoCart/>:null}
+
           </section>
          </div>
 
@@ -82,8 +91,37 @@ const SingleProduct = () => {
   )
 }
 
-const Wrapper = styled.main `
-
+const Wrapper = styled.main`
+  .product-center {
+    display: grid;
+    gap: 4rem;
+    margin-top: 2rem;
+  }
+  .price {
+    color: var(--clr-primary-5);
+  }
+  .desc {
+    line-height: 2;
+    max-width: 45em;
+  }
+  .info {
+    text-transform: capitalize;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    span {
+      font-weight: 700;
+    }
+  }
+  @media (min-width: 992px) {
+    .product-center {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+    .price {
+      font-size: 1.25rem;
+    }
+  }
 `;
 
 export default SingleProduct;
