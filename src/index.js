@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import {ProductsProvider} from './context/product_context';
 import {FilterProvider} from './context/filter_context';
+import {UserProvider} from './context/user_context';
 import { Auth0Provider } from "@auth0/auth0-react";
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log(process.env.REACT_APP_DOMAIN);
-console.log(process.env.REACT_APP_AUTH_CLIENT);
+
 root.render(
   <React.StrictMode>
   <Auth0Provider
@@ -17,11 +17,13 @@ root.render(
   client={process.env.REACT_APP_AUTH_CLIENT}
   redirectUri={window.location.origin}
   cacheLocation="localstorage">
+  <UserProvider>
   <ProductsProvider>
   <FilterProvider>
     <App />
     </FilterProvider>
     </ProductsProvider>
+    </UserProvider>
     </Auth0Provider>
   </React.StrictMode>
 );
