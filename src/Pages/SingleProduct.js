@@ -63,7 +63,7 @@ const SingleProduct = () => {
     <Wrapper>
       <PageHero title={name} product={product}/>
       <div className="section-center page-100">
-        <Link to="/products">
+        <Link to="/products" className="btn">
           back to products
         </Link>
          <div className="product-center">
@@ -104,6 +104,7 @@ const Wrapper = styled.main`
     line-height: 2;
     max-width: 45em;
   }
+
   .info {
     text-transform: capitalize;
     width: 300px;
