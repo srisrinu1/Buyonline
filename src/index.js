@@ -5,6 +5,7 @@ import App from './App';
 import {ProductsProvider} from './context/product_context';
 import {FilterProvider} from './context/filter_context';
 import {UserProvider} from './context/user_context';
+import {CartProvider} from './context/cart_context';
 import { Auth0Provider } from "@auth0/auth0-react";
 import reportWebVitals from './reportWebVitals';
 
@@ -18,11 +19,13 @@ root.render(
   redirectUri={window.location.origin}
   cacheLocation="localstorage">
   <UserProvider>
+  <CartProvider>
   <ProductsProvider>
   <FilterProvider>
     <App />
     </FilterProvider>
     </ProductsProvider>
+    </CartProvider>
     </UserProvider>
     </Auth0Provider>
   </React.StrictMode>
