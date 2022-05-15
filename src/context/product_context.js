@@ -78,7 +78,7 @@ export const ProductsProvider=(props)=>{
 export const useProductsContext=()=>{
     const context=useContext(ProductsContext);
     if(context===undefined){
-        throw new Error("useContext was used outside of its Provider");
+        throw new Error("useProductsContext was used outside of its Provider");
     }
     return(context);
 

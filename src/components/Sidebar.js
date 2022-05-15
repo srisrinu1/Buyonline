@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {useProductsContext} from "../context/product_context";
+import {useUserContext} from '../context/user_context';
 import { FaTimes } from "react-icons/fa";
 import { links } from "../utils/constants";
+import CartButtons from './CartButtons';
 
 const Sidebar = () => {
+    // const {isSideBarOpen,closeSideBar}=useProductsContext();
     const {isSideBarOpen,closeSideBar}=useProductsContext();
+    const {myUser}=useUserContext();
   return (
     <SidebarContainer>
     <aside
@@ -34,22 +38,22 @@ const Sidebar = () => {
           );
         })}
         </ul>
-        {/* {myUser && (
+        {myUser && (
           <li>
-            <Link to="/checkout" onClick={closeSidebar}>
+            <Link to="/checkout" onClick={closeSideBar}>
               checkout
             </Link>
           </li>
         )}
         {myUser && (
           <li>
-            <Link to="/orders" onClick={closeSidebar}>
+            <Link to="/orders" onClick={closeSideBar}>
               orders
             </Link>
           </li>
         )}
 
-      <CartButtons /> */}
+      <CartButtons />
     </aside>
   </SidebarContainer>
 );

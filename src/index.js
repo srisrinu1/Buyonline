@@ -5,24 +5,30 @@ import App from './App';
 import {ProductsProvider} from './context/product_context';
 import {FilterProvider} from './context/filter_context';
 import {UserProvider} from './context/user_context';
+import {CartProvider} from './context/cart_context';
 import { Auth0Provider } from "@auth0/auth0-react";
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+console.log(process.env.REACT_APP_AUTH_CLIENT);
+console.log(process.env.REACT_APP_DOMAIN)
+
 root.render(
   <React.StrictMode>
   <Auth0Provider
   domain={process.env.REACT_APP_DOMAIN}
-  client={process.env.REACT_APP_AUTH_CLIENT}
+  clientId={process.env.REACT_APP_AUTH_CLIENT}
   redirectUri={window.location.origin}
   cacheLocation="localstorage">
   <UserProvider>
+  <CartProvider>
   <ProductsProvider>
   <FilterProvider>
     <App />
     </FilterProvider>
     </ProductsProvider>
+    </CartProvider>
     </UserProvider>
     </Auth0Provider>
   </React.StrictMode>
