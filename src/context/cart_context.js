@@ -70,7 +70,7 @@ export const CartProvider = (props) => {
 export const useCart=()=>{
     const context=useContext(cartContext);
     if(context===undefined){
-        throw new Error("useContext was used outside of its Provider");
+        throw new Error("useCartContext was used outside of its Provider");
     }
 
     return(context);
