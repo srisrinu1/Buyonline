@@ -53,9 +53,25 @@ export const CartProvider = (props) => {
 
 
   return (
-   <cartContext.Provider value={{}}>
+   <cartContext.Provider value={{
+       ...state,
+       addToCart,
+       removeFromCart,
+       toggleAmount,
+       clearCart
+   }}>
        {props.children}
    </cartContext.Provider>
 
   );
 };
+
+
+export const useCart=()=>{
+    const context=useContext(cartContext);
+    if(context===undefined){
+        throw new Error("useContext was used outside of its Provider");
+    }
+
+    return(context);
+}
