@@ -22,6 +22,8 @@ const SingleProduct = () => {
     fetchSingleProduct,
   } = useProductsContext();
 
+  console.log(product.name);
+
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
     //eslint-disable-next-line
@@ -81,7 +83,7 @@ const SingleProduct = () => {
                Brand: <span>{company}</span>
              </p>
              <hr />
-             {stock>0?<AddtoCart/>:null}
+             {stock>0?<AddtoCart product={product}/>:null}
 
           </section>
          </div>
