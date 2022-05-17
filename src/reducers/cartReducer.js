@@ -46,7 +46,7 @@ export const cartReducer = (state, action) => {
             }
         case REMOVE_CART_ITEM:
 
-            const tempCart2 = state.cart.filter((item) => item.id !== payload);
+            const tempCart2 = state.cart.filter((item) => item.id !== pay);
             return {...state, cart: tempCart2 };
         case CLEAR_CART:
             return {...state, cart: [] };
