@@ -104,6 +104,7 @@ const Wrapper = styled.section `
   justify-content:center;
   align-items:center;
   border:transparent;
+  margin-right:0.5rem;
   opacity: 0.5;
 
   svg {
