@@ -40,11 +40,12 @@ export const cartReducer = (state, action) => {
                     amount,
                     image: product.images[0].url,
                     price: product.price,
-                    max: product.stock
+                    max: product.stock,
                 };
                 return {...state, cart: [...state.cart, newItem] };
             }
         case REMOVE_CART_ITEM:
+
             const tempCart2 = state.cart.filter((item) => item.id !== payload);
             return {...state, cart: tempCart2 };
         case CLEAR_CART:
@@ -60,7 +61,7 @@ export const cartReducer = (state, action) => {
                         }
                         return {...item, amount: newAmount };
                     }
-                    if (action.payload.value === "dec") {
+                    if (payload.value === "dec") {
                         let newAmount = item.amount - 1;
                         if (newAmount < 1) {
                             newAmount = 1;

@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import Home from "../Pages/Home";
 import Products from "../Pages/Products";
 import SingleProduct from "../Pages/SingleProduct";
+import Cart from '../Pages/Cart'
 
 
 
@@ -25,6 +26,9 @@ const Routes = () => {
           <Route path="/products/:id">
           <SingleProduct />
 
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
         </Switch>
 
