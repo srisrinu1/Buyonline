@@ -60,7 +60,7 @@ export const cartReducer = (state, action) => {
                         }
                         return {...item, amount: newAmount };
                     }
-                    if (action.payload.value === "dec") {
+                    if (payload.value === "dec") {
                         let newAmount = item.amount - 1;
                         if (newAmount < 1) {
                             newAmount = 1;
