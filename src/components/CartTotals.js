@@ -51,6 +51,7 @@ display:flex;
 justify-content:center;
 
 
+
 article{
     border: 1px solid var(--clr-grey-8);
     border-radius: var(--radius);
