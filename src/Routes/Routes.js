@@ -5,7 +5,10 @@ import Sidebar from "../components/Sidebar";
 import Home from "../Pages/Home";
 import Products from "../Pages/Products";
 import SingleProduct from "../Pages/SingleProduct";
-import Cart from '../Pages/Cart'
+import Cart from '../Pages/Cart';
+import PrivateRoute from '../Pages/PrivateRoute';
+import Checkout from '../Pages/Checkout';
+import Orders from "../Pages/Orders";
 
 
 
@@ -23,13 +26,21 @@ const Routes = () => {
           <Route exact path="/products">
             <Products />
           </Route>
-          <Route path="/products/:id">
+          <Route exact path="/products/:id">
           <SingleProduct />
 
           </Route>
-          <Route path="/cart">
+          <Route exact path="/cart">
             <Cart />
           </Route>
+          <PrivateRoute exact path="/checkout">
+          <Checkout />
+
+          </PrivateRoute>
+
+          <PrivateRoute>
+            <Orders/>
+          </PrivateRoute>
         </Switch>
 
       </Router>
