@@ -9,12 +9,15 @@ import Cart from '../Pages/Cart';
 import PrivateRoute from '../Pages/PrivateRoute';
 import Checkout from '../Pages/Checkout';
 import Orders from "../Pages/Orders";
+import AuthWrapper from '../Pages/AuthWrapper';
+import Error from '../Pages/Error';
+
 
 
 
 const Routes = () => {
   return (
-    <>
+    <AuthWrapper>
    <Router>
    <Navbar />
    <Sidebar/>
@@ -38,14 +41,18 @@ const Routes = () => {
 
           </PrivateRoute>
 
-          <PrivateRoute>
+          <PrivateRoute exact path="/orders">
             <Orders/>
           </PrivateRoute>
+          <Route path="*">
+           <Error/>
+
+          </Route>
         </Switch>
 
       </Router>
 
-    </>
+    </AuthWrapper>
   )
 }
 
