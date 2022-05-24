@@ -44,7 +44,7 @@ const Routes = () => {
           <PrivateRoute exact path="/orders">
             <Orders/>
           </PrivateRoute>
-          <Route path="*">
+          <Route exact path="*">
            <Error/>
 
           </Route>
