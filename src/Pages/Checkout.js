@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import {useUserContext} from "../context/user_context";
 import styled from 'styled-components';
 import ShippingAddress from '../components/ShippingAddress';
+import StripeCheckout from '../components/StripeCheckout';
 
 
 const Checkout = () => {
@@ -28,6 +29,9 @@ const Checkout = () => {
            <div className="checkout">
               <ShippingAddress/>
               <div className="order-summary">
+                {address.saved && <StripeCheckout/>}
+
+                {/* <StripeCheckout/> */}
 
               </div>
 
