@@ -13,26 +13,31 @@ import {useHistory} from 'react-router-dom';
 import {useUserContext} from '../context/user_context';
 import styled from 'styled-components';
 
+
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-const CheckoutForm = () => {
-  const { cart, totalPrice, shippingFee, clearCart } = useCart();
-  const { orders, setOrders, perOrderTotal, setPerOrderTotal } =
-    useUserContext();
-  const history = useHistory();
 
-  //STRIPE STUFF
-  const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState("");
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState("");
-  const stripe = useStripe();
-  const elements = useElements();
+const CheckoutForm=()=>{
 
-  const cardStyle = {
-    style: {
-      base: {
+  const {cart,totalPrice,shippingFee,clearCart}=useCart();
+
+  const {orders,setOrders,perOrderTotal,setPerOrderTotal} =useUserContext();
+
+  const history=useHistory();
+
+  //For maintaing all things related to stripe
+  const [succeeded,setSucceeded]=useState(false);
+  const [error,setError]=useState(null);
+  const [processing,setProcessing]=useState("");
+  const [disabled,setDisabled]=useState(true);
+  const [clientSecret,setClientSecret]=useState("");
+  const stripe=useStripe();
+  const elements=useElements();
+
+
+  const CardStyle={
+    style:{
+      base:{
         color: "#32325d",
         fontFamily: "Arial, sans-serif",
         fontSmoothing: "antialiased",
@@ -44,37 +49,39 @@ const CheckoutForm = () => {
       invalid: {
         color: "#fa755a",
         iconColor: "#fa755a",
-      },
-    },
-  };
-
-  const createPaymentIntent = async () => {
-    try {
-      //client_secret from server.
-      const { data } = await axios.post(
-        "/.netlify/functions/create-payment-intent",
-        JSON.stringify({ cart, shippingFee, totalPrice })
-      );
-
-      setClientSecret(data.clientSecret);
-      console.log(data.clientSecret);
-    } catch (err) {
-      // console.log(err);
+      }
     }
-  };
+  }
+
+
+  const createPaymentIntent=async()=>{
+
+    try{
+    const {data}=await axios.post("/.netlify/functions/create-payment-intent",
+    JSON.stringify({cart,shippingFee,totalPrice}));
+
+    setClientSecret(data.clientSecret);
+
+    }
+    catch(error){
+       console.log(error);
+
+    }
+  }
 
   useEffect(() => {
     createPaymentIntent();
-    //eslint-disable-next-line
-  }, []);
+  },[]);
 
-  const handleChange = async (e) => {
+  const handleInputChange=async(e)=>{
     setDisabled(e.empty);
-    setError(e.error ? e.error.message : "");
-  };
+    setError(e.error?e.error.message:"");
+  }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+
+ const handleSubmit=async(e)=>{
+
+  e.preventDefault();
     setProcessing(true);
 
     const payload = await stripe.confirmCardPayment(clientSecret, {
@@ -83,76 +90,103 @@ const CheckoutForm = () => {
       },
     });
 
+
     if (payload.error) {
       setError(`Payment failed ${payload.error.message}`);
       setProcessing(false);
-    } else {
+    }
+    else{
       setError(null);
       setProcessing(false);
-      setOrders([...orders, cart]);
-      setPerOrderTotal([...perOrderTotal, totalPrice + shippingFee]);
+      setOrders([...orders,cart]);
+      setPerOrderTotal([...perOrderTotal,totalPrice+shippingFee]);
       setSucceeded(true);
-      setTimeout(() => {
+      setTimeout(()=>{
         clearCart();
-        history.push("/orders");
-      }, 4000);
-    }
-  };
+        history.push("/orders")
 
-  return (
-    <div>
-      {succeeded ? (
-        <article>
-          <h4>Thank you</h4>
-          <h4 className="success">Your payment was successful!</h4>
-          <h4>Redirecting to orders page...</h4>
-        </article>
-      ) : (
-        <article>
-          <h4>Make Payment</h4>
-          <h5>Your total is {formatPrice(shippingFee + totalPrice)}</h5>
-          <p>Test Card Number: 4242 4242 4242 4242</p>
-        </article>
-      )}
-      <form id="payment-form" onSubmit={handleSubmit}>
-        <CardElement
-          id="card-element"
-          options={cardStyle}
-          onChange={handleChange}
-        />
-        <button disabled={processing || disabled || succeeded} id="submit">
-          <span id="button-text">
-            {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
-          </span>
-        </button>
-        {/* Show any error that happens when processing the paymnent */}
-        {error && (
+      },4000);
+    }
+
+
+ }
+
+    return(
+        <div>
+        {
+          succeeded?
+          (
+          <article>
+            <h4>Thank you</h4>
+            <h4 className="success">Your payment was successful!</h4>
+            <h4>Redirecting to orders page...</h4>
+          </article>
+          )
+          :
+          (
+            <article>
+               <h4>Make Payment</h4>
+               <h5>Your total is {formatPrice(shippingFee + totalPrice)}</h5>
+               <p>Test Card Number: 4242 4242 4242 4242</p>
+            </article>
+          )
+
+
+        }
+
+        <form id="payment-form" onSubmit={handleSubmit}>
+          <CardElement
+            id="card-element"
+          options={CardStyle}
+          onChange={handleInputChange}
+          />
+
+          <button
+          disabled={processing || disabled || succeeded}
+          id="submit">
+           <span
+           id="button-text">
+           {processing ? <div className="spinner" id="spinner"></div>:"Pay"}
+
+           </span>
+
+          </button>
+
+
+          {/* Showing error if it happens during payment processing */}
+
+          {error && (
           <div className="card-error" role="alert">
             {error}
           </div>
         )}
-        {/* Show a success messaage upon completion */}
-        <p className={succeeded ? "result-message" : "result-message hidden"}>
-          Payment succeeded. Refresh the page to pay again.
+
+
+        {/* Show success status upon payment completion */}
+        <p className={succeeded?"result-message":"result-message hidden"}>
+           Payment succeeded. Refresh the page to pay again.
         </p>
-      </form>
-    </div>
-  );
-};
+        </form>
+
+
+        </div>
+    )
+}
 
 const StripeCheckout = () => {
   return (
     <Wrapper>
-      <Elements stripe={promise}>
-        <CheckoutForm />
+       <Elements stripe={promise}>
+           <CheckoutForm/>
       </Elements>
     </Wrapper>
-  );
-};
+  )
+}
 
-const Wrapper = styled.section`
-  form {
-    width: 30vw;
+const Wrapper = styled.section `
+
+  form{
+    width:30vw;
     align-self: center;
     box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
       0px 2px 5px 0px rgba(50, 50, 93, 0.1),
@@ -160,7 +194,8 @@ const Wrapper = styled.section`
     border-radius: 7px;
     padding: 40px;
   }
-  input {
+
+  input{
     border-radius: 6px;
     margin-bottom: 6px;
     padding: 12px;
@@ -171,18 +206,23 @@ const Wrapper = styled.section`
     background: white;
     box-sizing: border-box;
   }
+
   .success {
     color: var(--clr-primary-5);
   }
+
   .result-message {
     line-height: 22px;
     font-size: 16px;
   }
+
   .result-message a {
     color: rgb(89, 111, 214);
     font-weight: 600;
     text-decoration: none;
   }
+
+
   .hidden {
     display: none;
   }
@@ -291,6 +331,6 @@ const Wrapper = styled.section`
       width: 80vw;
     }
   }
-`;
 
-export default StripeCheckout;
+`;
+export default StripeCheckout
