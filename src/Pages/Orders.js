@@ -1,5 +1,6 @@
 import React,{useRef} from "react";
 import ReactToPrint from "react-to-print";
+import { useReactToPrint } from 'react-to-print';
 import PageHero  from "../components/PageHero";
 import OrdersToPrint from "../components/OrdersToPrint";
 import styled from "styled-components";
@@ -11,6 +12,9 @@ import { formatPrice } from "../utils/helpers";
 
 const Orders = () => {
   let componentRef=useRef();
+  const handlePrint=useReactToPrint({
+    content:()=>componentRef.current,
+  })
   const { orders, perOrderTotal } = useUserContext();
 
   if (orders.length > 0) {
@@ -34,10 +38,7 @@ const Orders = () => {
           <OrdersToPrint ref={componentRef}/>
 
            <div id="print-component">
-           <ReactToPrint
-            trigger={() => <button className="btn">Print</button>}
-            content={() => componentRef.current}
-        />
+              <button onClick={handlePrint}>Print this out!</button>
 
            </div>
 
