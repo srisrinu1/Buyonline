@@ -9,6 +9,7 @@ import {Link} from 'react-router-dom';
 
 const Orders = () => {
   const {orders,perOrderTotal}=useCart();
+  console.log(orders);
   if(orders?.length > 0) {
   return (
     <main>
