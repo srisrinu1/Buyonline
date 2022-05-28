@@ -1,5 +1,6 @@
 import React from "react";
 import PageHero  from "../components/PageHero";
+import OrdersToPrint from "../components/OrdersToPrint";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -15,7 +16,7 @@ const Orders = () => {
       <main>
         <PageHero title="Orders" />
         <Wrapper className="page section section-center">
-          {orders.map((order, index) => {
+          {/* {orders.map((order, index) => {
             return (
               <section className="order">
                 <h4>Order #{index + 1}</h4>
@@ -27,7 +28,8 @@ const Orders = () => {
                 </h5>
               </section>
             );
-          })}
+          })} */}
+          <OrdersToPrint/>
         </Wrapper>
       </main>
     );
