@@ -17,7 +17,6 @@ const Orders = () => {
 
   })
   const { orders, perOrderTotal } = useUserContext();
-  console.log(componentRef.current.value);
   console.log(componentRef.current);
 
   if (orders.length > 0) {
