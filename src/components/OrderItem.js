@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {formatPrice} from '../utils/helpers';
 
-const OrderItem = ({id, name, color, price, image, amount}) => {
+const OrderItem = ({id, image, name, color, price, amount}) => {
   return (
     <Wrapper>
       <div className="title">
