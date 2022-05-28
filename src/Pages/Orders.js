@@ -35,7 +35,7 @@ const Orders = () => {
               </section>
             );
           })} */}
-          <OrdersToPrint />
+          <OrdersToPrint ref={componentRef} />
 
            <div id="print-component">
               <button onClick={handlePrint} className="btn">Print this out!</button>
