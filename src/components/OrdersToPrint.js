@@ -6,7 +6,7 @@ import { formatPrice } from "../utils/helpers";
 const OrdersToPrint = React.forwardRef((props,ref) => {
     const { orders, perOrderTotal } = useUserContext();
   return (
-     <section ref={ref}>
+     <section  className="section section-center" ref={ref}>
          {orders.map((order, index) => {
             return (
               <section className="order">
