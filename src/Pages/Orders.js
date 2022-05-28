@@ -37,11 +37,11 @@ const Orders = () => {
           })} */}
           <OrdersToPrint />
 
-           {/* <div id="print-component">
+           <div id="print-component">
               <button onClick={handlePrint}>Print this out!</button>
 
-           </div> */}
-           <button>Hi</button>
+           </div>
+           {/* <button>Hi</button> */}
 
         </Wrapper>
       </main>
