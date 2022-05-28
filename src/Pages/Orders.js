@@ -14,6 +14,7 @@ const Orders = () => {
   let componentRef=useRef();
   const handlePrint=useReactToPrint({
     content:()=>componentRef.current,
+
   })
   const { orders, perOrderTotal } = useUserContext();
 
@@ -37,8 +38,13 @@ const Orders = () => {
           })} */}
           <OrdersToPrint ref={componentRef} />
 
-           <div id="print-component" className="section-center">
-              <button onClick={handlePrint} className="btn">Print this out!</button>
+           <div id="print-component" className="section section-center">
+              <button onClick={()=>{
+                handlePrint();
+                alert('Printed');
+              }} className="btn">Print this out!</button>
+
+
 
            </div>
            {/* <button>Hi</button> */}
@@ -95,6 +101,7 @@ const Wrapper = styled.section`
   #print-component{
     display:flex;
     justify-content:flex-end;
+
   }
 `;
 
