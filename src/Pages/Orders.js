@@ -17,6 +17,8 @@ const Orders = () => {
 
   })
   const { orders, perOrderTotal } = useUserContext();
+  console.log(componentRef.current.value);
+  console.log(componentRef.current);
 
   if (orders.length > 0) {
     return (
@@ -39,10 +41,9 @@ const Orders = () => {
           <OrdersToPrint ref={componentRef} />
 
            <div id="print-component" className="section section-center">
-              <button onClick={()=>{
-                handlePrint();
-                alert('Printed');
-              }} className="btn">Print this out!</button>
+              <button onClick={handlePrint} className="btn">Print this out!</button>
+              {componentRef.current}
+              {componentRef.current.value}
 
 
 
