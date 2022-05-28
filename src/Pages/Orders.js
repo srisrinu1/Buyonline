@@ -40,7 +40,10 @@ const Orders = () => {
           <OrdersToPrint ref={componentRef} />
 
            <div id="print-component" className="section section-center">
-              <button onClick={handlePrint} className="btn">Print this out!</button>
+              <button onClick={()=>{
+                handlePrint();
+
+              }} className="btn">Print this out!</button>
               {componentRef.current}
               {componentRef.current}
 
