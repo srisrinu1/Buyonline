@@ -38,7 +38,7 @@ const Orders = () => {
           <OrdersToPrint />
 
            <div id="print-component">
-              <button onClick={handlePrint}>Print this out!</button>
+              <button onClick={handlePrint} className="btn">Print this out!</button>
 
            </div>
            {/* <button>Hi</button> */}

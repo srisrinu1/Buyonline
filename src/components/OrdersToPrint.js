@@ -3,10 +3,10 @@ import { useUserContext } from "../context/user_context";
 import OrderItem from "./OrderItem";
 import { formatPrice } from "../utils/helpers";
 
-const OrdersToPrint = () => {
+const OrdersToPrint = React.forwardRef((props,ref) => {
     const { orders, perOrderTotal } = useUserContext();
   return (
-     <>
+     <section ref={ref}>
          {orders.map((order, index) => {
             return (
               <section className="order">
@@ -20,8 +20,8 @@ const OrdersToPrint = () => {
               </section>
             );
           })}
-     </>
+     </section>
   )
-}
+});
 
 export default OrdersToPrint
