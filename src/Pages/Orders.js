@@ -21,7 +21,7 @@ const Orders = () => {
     return (
       <main>
         <PageHero title="Orders" />
-        <Wrapper className="page section section-center">
+        <Wrapper className="page ">
           {/* {orders.map((order, index) => {
             return (
               <section className="order">
@@ -37,7 +37,7 @@ const Orders = () => {
           })} */}
           <OrdersToPrint ref={componentRef} />
 
-           <div id="print-component">
+           <div id="print-component" className="section-center">
               <button onClick={handlePrint} className="btn">Print this out!</button>
 
            </div>
