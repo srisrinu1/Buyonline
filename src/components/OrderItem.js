@@ -18,9 +18,9 @@ const OrderItem = ({id, name, color, price, image, amount}) => {
         </div>
       </div>
       <div className="container">
-      <h5 className="price">{formatPrice(amount)}</h5>
-      <h5>Qty: {amount}</h5>
-      <h5>Total: {formatPrice(price * amount)}</h5>
+          <h5 className="price">{formatPrice(amount)}</h5>
+          <h5>Qty: {amount}</h5>
+          <h5>Total: {formatPrice(price * amount)}</h5>
       </div>
     </Wrapper>
   )
@@ -139,6 +139,15 @@ const Wrapper = styled.article `
       align-items: flex-start;
       gap: 1rem;
       text-align: left;
+    }
+
+    .container{
+        display:grid;
+        align-items:center;
+        grid-template-columns:270px 230px 1fr;
+
+        justify-items:center;
+        align-items:center;
     }
   }
 
