@@ -18,7 +18,7 @@ const OrderItem = ({id, name, color, price, image, amount}) => {
         </div>
       </div>
       <div className="container">
-          <h5 className="price">{formatPrice(amount)}</h5>
+          <h5 className="price">{formatPrice(price)}</h5>
           <h5>Qty: {amount}</h5>
           <h5>Total: {formatPrice(price * amount)}</h5>
       </div>
