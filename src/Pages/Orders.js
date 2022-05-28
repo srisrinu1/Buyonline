@@ -43,7 +43,7 @@ const Orders = () => {
            <div id="print-component" className="section section-center">
               <button onClick={handlePrint} className="btn">Print this out!</button>
               {componentRef.current}
-              {componentRef.current.value}
+              {componentRef.current}
 
 
 
