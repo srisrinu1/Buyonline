@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {formatPrice} from '../utils/helpers';
 
-const OrderItem = ({id, name, color, price, image, amount}) => {
+const OrderItem = ({id, image, name, color, price, amount}) => {
   return (
     <Wrapper>
       <div className="title">
@@ -18,7 +18,7 @@ const OrderItem = ({id, name, color, price, image, amount}) => {
         </div>
       </div>
       <div className="container">
-          <h5 className="price">{formatPrice(amount)}</h5>
+          <h5 className="price">{formatPrice(price)}</h5>
           <h5>Qty: {amount}</h5>
           <h5>Total: {formatPrice(price * amount)}</h5>
       </div>
