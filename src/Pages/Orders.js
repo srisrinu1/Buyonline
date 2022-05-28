@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useRef} from "react";
+import ReactToPrint from "react-to-print";
 import PageHero  from "../components/PageHero";
 import OrdersToPrint from "../components/OrdersToPrint";
 import styled from "styled-components";
@@ -9,6 +10,7 @@ import OrderItem from "../components/OrderItem";
 import { formatPrice } from "../utils/helpers";
 
 const Orders = () => {
+  let componentRef=useRef();
   const { orders, perOrderTotal } = useUserContext();
 
   if (orders.length > 0) {
@@ -29,7 +31,16 @@ const Orders = () => {
               </section>
             );
           })} */}
-          <OrdersToPrint/>
+          <OrdersToPrint ref={componentRef}/>
+
+           <div id="print-component">
+           <ReactToPrint
+            trigger={() => <button className="btn">Print</button>}
+            content={() => componentRef.current}
+        />
+
+           </div>
+
         </Wrapper>
       </main>
     );
@@ -61,6 +72,10 @@ const Wrapper = styled.section`
     margin: 1.5rem 0;
     font-weight: 400;
   }
+
+  #print-component{
+    display:none;
+  }
   @media screen and (min-width: 776px) {
     .total-bill {
       font-size: 1.25rem;
@@ -73,6 +88,11 @@ const Wrapper = styled.section`
       margin-bottom: 1rem;
       text-transform: none;
     }
+  }
+
+  .print-component{
+    display:flex;
+    justify-content:flex-end;
   }
 `;
 
