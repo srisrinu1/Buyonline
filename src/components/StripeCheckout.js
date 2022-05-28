@@ -101,12 +101,16 @@ const CheckoutForm=()=>{
       setOrders([...orders,cart]);
       setPerOrderTotal([...perOrderTotal,totalPrice+shippingFee]);
       setSucceeded(true);
+      console.log(orders);
+      console.log(perOrderTotal);
       setTimeout(()=>{
         clearCart();
         history.push("/orders")
 
       },4000);
     }
+    console.log(orders);
+    console.log(perOrderTotal);
 
 
  }
