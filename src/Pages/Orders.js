@@ -91,7 +91,7 @@ const Wrapper = styled.section`
     }
   }
 
-  .print-component{
+  #print-component{
     display:flex;
     justify-content:flex-end;
   }
