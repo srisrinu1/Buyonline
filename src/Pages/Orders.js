@@ -1,14 +1,14 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import OrderItem from '../components/OrderItem';
-import {useCart} from '../context/cart_context';
+import {useUserContext} from '../context/user_context';
 import {formatPrice} from '../utils/helpers';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 
 const Orders = () => {
-  const {orders,perOrderTotal}=useCart();
+  const {orders,perOrderTotal}=useUserContext();
   console.log(orders);
   if(orders?.length > 0) {
   return (
