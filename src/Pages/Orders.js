@@ -44,7 +44,7 @@ const Orders = () => {
                 handlePrint();
                 setTimeout(()=>{
                  clearOrders();
-                },30000)
+                },20000)
 
 
               }} className="btn">Print this out!</button>
