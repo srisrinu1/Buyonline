@@ -42,6 +42,7 @@ export const UserProvider = (props) => {
 
     const clearOrders=()=>{
         setOrders([]);
+        setPerOrderTotal([]);
     }
 
 
