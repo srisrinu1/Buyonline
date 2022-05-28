@@ -16,7 +16,7 @@ const Orders = () => {
     content:()=>componentRef.current,
 
   })
-  const { orders, perOrderTotal } = useUserContext();
+  const { orders, perOrderTotal,clearOrders } = useUserContext();
   console.log(componentRef.current);
 
   if (orders.length > 0) {
@@ -42,10 +42,13 @@ const Orders = () => {
            <div id="print-component" className="section section-center">
               <button onClick={()=>{
                 handlePrint();
+                setTimeout(()=>{
+                 clearOrders();
+                },5000)
+
 
               }} className="btn">Print this out!</button>
-              {componentRef.current}
-              {componentRef.current}
+
 
 
 
