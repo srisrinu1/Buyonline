@@ -94,6 +94,12 @@ const Wrapper = styled.section`
     .total-bill {
       font-size: 1.25rem;
     }
+    
+    #print-component{
+    display:flex;
+    justify-content:flex-end;
+
+  }
   }
   .empty {
     margin: 4rem;
@@ -104,11 +110,11 @@ const Wrapper = styled.section`
     }
   }
 
-  #print-component{
-    display:flex;
-    justify-content:flex-end;
+//   #print-component{
+//     display:flex;
+//     justify-content:flex-end;
 
-  }
+//   }
 `;
 
 export default Orders;
