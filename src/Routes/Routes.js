@@ -11,6 +11,7 @@ import Checkout from '../Pages/Checkout';
 import Orders from "../Pages/Orders";
 import AuthWrapper from '../Pages/AuthWrapper';
 import Error from '../Pages/Error';
+import AboutPage from "../Pages/AboutPage";
 
 
 
@@ -32,6 +33,9 @@ const Routes = () => {
           <Route exact path="/products/:id">
           <SingleProduct />
 
+          </Route>
+          <Route exact path="/about">
+            <AboutPage/>
           </Route>
           <Route exact path="/cart">
             <Cart />
