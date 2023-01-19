@@ -18,21 +18,12 @@ const Orders = () => {
   })
   const { orders, perOrderTotal,clearOrders } = useUserContext();
   console.log(componentRef.current);
-
   if (orders.length > 0) {
     return (
       <main>
         <PageHero title="Orders" />
-        <Wrapper className="page ">
-
-          {/* Orders */}
-<<<<<<< HEAD
-          {orders?.map((order, index) => {
-=======
-          
-
-          {{orders.map((order, index) => {
->>>>>>> 365b95b67b6b14d5b242c7d8969c7bb7870f1d6b
+        <Wrapper className="page section section-center">
+          {orders.map((order, index) => {
             return (
               <section className="order">
                 <h4>Order #{index + 1}</h4>
@@ -44,8 +35,7 @@ const Orders = () => {
                 </h5>
               </section>
             );
-
-          })}}
+          })}
 
           <OrdersToPrint ref={componentRef} />
 
@@ -63,12 +53,11 @@ const Orders = () => {
 
 
            </div>
-
-
         </Wrapper>
       </main>
     );
-  } else {
+  }
+ else {
     return (
       <main>
         <PageHero title="Orders" />
@@ -104,7 +93,7 @@ const Wrapper = styled.section`
     .total-bill {
       font-size: 1.25rem;
     }
-    
+
     #print-component{
     display:flex;
     justify-content:flex-end;
