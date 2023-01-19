@@ -24,7 +24,7 @@ const Orders = () => {
       <main>
         <PageHero title="Orders" />
         <Wrapper className="page ">
-          {/* {orders.map((order, index) => {
+          {orders.map((order, index) => {
             return (
               <section className="order">
                 <h4>Order #{index + 1}</h4>
@@ -36,7 +36,7 @@ const Orders = () => {
                 </h5>
               </section>
             );
-          })} */}
+          })}
           <OrdersToPrint ref={componentRef} />
 
            <div id="print-component" className="section section-center">
@@ -53,7 +53,7 @@ const Orders = () => {
 
 
            </div>
-           {/* <button>Hi</button> */}
+
 
         </Wrapper>
       </main>
