@@ -23,20 +23,6 @@ const Orders = () => {
       <main>
         <PageHero title="Orders" />
         <Wrapper className="page section section-center">
-          {orders.map((order, index) => {
-            return (
-              <section className="order">
-                <h4>Order #{index + 1}</h4>
-                {order.map((item) => (
-                  <OrderItem key={item.id} {...item} />
-                ))}
-                <h5 className="total-bill">
-                  Total Bill: {formatPrice(perOrderTotal[index])}
-                </h5>
-              </section>
-            );
-          })}
-
           <OrdersToPrint ref={componentRef} />
 
            <div id="print-component" className="section section-center">
