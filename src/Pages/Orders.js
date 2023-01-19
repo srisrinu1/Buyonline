@@ -24,8 +24,11 @@ const Orders = () => {
       <main>
         <PageHero title="Orders" />
         <Wrapper className="page ">
+
           {/* Orders */}
-          {orders.map((order, index) => {
+          
+
+          {{orders.map((order, index) => {
             return (
               <section className="order">
                 <h4>Order #{index + 1}</h4>
@@ -37,7 +40,9 @@ const Orders = () => {
                 </h5>
               </section>
             );
-          })}
+
+          })}}
+
           <OrdersToPrint ref={componentRef} />
 
            <div id="print-component" className="section section-center">
@@ -95,6 +100,12 @@ const Wrapper = styled.section`
     .total-bill {
       font-size: 1.25rem;
     }
+    
+    #print-component{
+    display:flex;
+    justify-content:flex-end;
+
+  }
   }
   .empty {
     margin: 4rem;
@@ -105,11 +116,11 @@ const Wrapper = styled.section`
     }
   }
 
-  #print-component{
-    display:flex;
-    justify-content:flex-end;
+//   #print-component{
+//     display:flex;
+//     justify-content:flex-end;
 
-  }
+//   }
 `;
 
 export default Orders;
