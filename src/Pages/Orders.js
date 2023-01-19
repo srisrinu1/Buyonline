@@ -26,9 +26,13 @@ const Orders = () => {
         <Wrapper className="page ">
 
           {/* Orders */}
+<<<<<<< HEAD
+          {orders?.map((order, index) => {
+=======
           
 
           {{orders.map((order, index) => {
+>>>>>>> 365b95b67b6b14d5b242c7d8969c7bb7870f1d6b
             return (
               <section className="order">
                 <h4>Order #{index + 1}</h4>
