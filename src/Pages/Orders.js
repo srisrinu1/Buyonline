@@ -25,7 +25,7 @@ const Orders = () => {
         <PageHero title="Orders" />
         <Wrapper className="page ">
           {/* Orders */}
-          {orders.map((order, index) => {
+          {orders?.map((order, index) => {
             return (
               <section className="order">
                 <h4>Order #{index + 1}</h4>
